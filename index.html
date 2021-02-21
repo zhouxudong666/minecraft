@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Minecraft Server | Portal</title>
+    <meta name="description" content="Minecraft Server 1.8-1.15.x Creative, Survival, Mini-Games, Pixelmon.">
+    <meta name="keywords" content="Minecraft, Creative, Survival, Mini-Games, Pixelmon">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var splashes = ["Your Text Here 1", "Your Text Here 2", "Your Text Here 3", "Your Text Here 4", "Your Text Here 5", "Your Text Here 6", "Your Text Here 7"]; // Create an array of all splash texts
+            document.getElementById('subtitle').innerHTML = splashes[Math.floor(Math.random() * splashes.length)]; // Pick a random one from the array and replace "Loading..."
+        });
+    </script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <div class="logo">
+                <img src="assets/img/logo.png">
+                <p id="subtitle">
+                    Loading...
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <!-- Empty left column -->
+        </div>
+        <div class="col-sm-4">
+            <div class="container">
+                <div class="btnbox">
+                    <a>
+                        <div class="mainbtn"><font color="yellow"><span id="players">0</span></font> players are playing on <font color="yellow">mc.hypixel.net</font></div>
+                    </a>
+                </div>
+                <div class="clearfi"></div>
+                <!-- Diviver Line -->
+                <div class="btnbox">
+                    <a href="#">
+                        <div class="mainbtn">Forums</div>
+                    </a>
+                </div>
+                <div class="clearfi"></div>
+                <!-- Diviver Line -->
+                <div class="btnbox">
+                    <a href="#">
+                        <div class="mainbtn">Vote</div>
+                    </a>
+                </div>
+                <div class="clearfi"></div>
+                <!-- Diviver Line -->
+                <div class="btnbox">
+                    <a href="#">
+                        <div class="mainbtn">Store</div>
+                    </a>
+                </div>
+                <div class="clearfi"></div>
+                <!-- Diviver Line -->
+                <div class="btnbox">
+                    <a href="#">
+                        <div class="mainbtn">Rules</div>
+                    </a>
+                </div>
+                <div class="clearfi"></div>
+                <!-- Diviver Line -->
+                <div class="btnbox">
+                    <a href="#">
+                        <div class="mainbtn">Staff</div>
+                    </a>
+                </div>
+                <div class="clearfi"></div>
+                <!-- Diviver Line -->
+                <div class="btncont">
+                    <div class="mlbtnbox">
+                        <a href="#">
+                            <div class="mainbtn">Discord</div>
+                        </a>
+                    </div>
+                    <div class="mrbtnbox">
+                        <a href="#">
+                            <div class="mainbtn">Bans</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="container">
+                <div class="mfbtnbox">
+                    <div class="mainbtn">
+                        <a href="#"><img src="assets/img/fb.png"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                getPlayerCount();
+                setInterval(function() {
+                    getPlayerCount();
+                }, 60 * 1000); // Every 60 seconds refetch playercount
+            });
+
+            function getPlayerCount() {
+                $.getJSON("https://api.minetools.eu/ping/mc.hypixel.net", function(data) {
+                    $("#ping").html(data.latency.toFixed(0));
+                    $("#ip").html("mc.hypixel.net");
+                    $("#players").html(data.players.online);
+                });
+            }
+
+            function copyToClipboard() {
+                window.prompt("Press Ctrl + C to copy the server IP.", "mc.hypixel.net");
+            }
+        </script>
+    </div>
+</body>
+
+</html>
